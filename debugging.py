@@ -12,16 +12,12 @@ def divisors(num):
     # negativo en nuestro programa de divisores
 
 def run():
-    try:
-        num = int(input("Ingresa un número: "))
-        if num <= 0:
-            raise Exception('El número debe ser mayor a 0')
-        print(divisors(num))
-        print("Terminó mi programa")
-    except ValueError:
-        print("Debes ingresar un número")
-    except Exception as ex:
-        print(ex)
+
+    num = input("Ingresa un número: ")
+    # Assert statement
+    assert num.isnumeric() and num > 0, 'Ingresa sólo numeros positivos'
+    print(divisors(num))
+    print("Terminó mi programa")
 
 if __name__ == '__main__':
     run()
