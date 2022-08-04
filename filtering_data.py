@@ -71,6 +71,7 @@ DATA = [
     },
 ]
 
+# Function to show list
 def showResult(show_list):
     print("*** Starting ***")
     for item in show_list:
@@ -96,22 +97,27 @@ def run():
         # Crear las listas "all_python_devs" y "all_Platzi_workers" usando una combinación de filter y map
         # Crear la lista "old_people" y "adults" con list comprehension
 
-    # Filter the data of people that his language is python and Map in "my_python_devs" only his name
-    my_python_devs = list(filter(lambda worker: worker["language"] == "python", DATA)) # Filter
-    my_python_devs = list(map(lambda worker: worker["name"], my_python_devs)) # Map
-    ## Print this data --
-    showResult(my_python_devs)
+    # Filter the data of people that his language is python and Map in "python_devs" only his name
+    python_devs = list(filter(lambda worker: worker["language"] == "python", DATA)) # Filter
+    python_devs = list(map(lambda worker: worker["name"], python_devs)) # Map
+    # Print this data
+    showResult(python_devs)
 
-    my_Platzi_workers = list(filter(lambda worker: worker["organization"] == "Platzi", DATA))
-    my_Platzi_workers = list(map(lambda worker: worker["name"], my_Platzi_workers))
+    # Filter the data of people that his "organization" is "Platzi" then, Map in "platzi_devs" only his name
+    platzi_workers = list(filter(lambda worker: worker["organization"] == "Platzi", DATA)) # Filter
+    platzi_workers = list(map(lambda worker: worker["name"], platzi_workers)) # Map
+    # Print this data
+    showResult(platzi_workers)
 
-    showResult(my_Platzi_workers)
+    # Save worker "name" in DATA if his "age" is 18 or higher.
+    adults_list = [worker["name"] for worker in DATA if worker["age"] >= 18]
+    # Print this data
+    showResult(adults_list)
 
-    # Itinerate through the last list created
-    for worker in my_python_devs:
-        # Print it
-        print(worker)
-
+    # Add to each worker, True or False, if his age is higher than 70 or not
+    old_people_list = [worker | {"old": worker["age"] > 70} for worker in DATA]
+    # Print it
+    showResult(old_people_list)
 
 if __name__ == '__main__':
     run()
