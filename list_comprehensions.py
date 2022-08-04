@@ -15,7 +15,7 @@ def run():
 
     # In this case, in a range from 1 to 9999
     # Where the conditional is true, means that is multiple of 4, 6 and 9.
-    squares2 = [i for i in range(1, 1000    0) if i % 36 == 0]
+    squares2 = [i for i in range(1, 10000) if i % 36 == 0]
     print(squares2)
             
 
