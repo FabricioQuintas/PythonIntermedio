@@ -71,6 +71,11 @@ DATA = [
     },
 ]
 
+def showResult(show_list):
+    print("*** Starting ***")
+    for item in show_list:
+        print(item)
+    print("*** Done ***")
 
 def run():
     # For all DATA, take all worker name which his lenguage is "python"
@@ -87,9 +92,23 @@ def run():
     # That if the person is older than 70 will return True, and if not False
     old_people = list(map(lambda worker: worker | {"old": worker["age"] > 70}, DATA))
 
+    # Reto:
+        # Crear las listas "all_python_devs" y "all_Platzi_workers" usando una combinación de filter y map
+        # Crear la lista "old_people" y "adults" con list comprehension
+
+    # Filter the data of people that his language is python and Map in "my_python_devs" only his name
+    my_python_devs = list(filter(lambda worker: worker["language"] == "python", DATA)) # Filter
+    my_python_devs = list(map(lambda worker: worker["name"], my_python_devs)) # Map
+    ## Print this data --
+    showResult(my_python_devs)
+
+    my_Platzi_workers = list(filter(lambda worker: worker["organization"] == "Platzi", DATA))
+    my_Platzi_workers = list(map(lambda worker: worker["name"], my_Platzi_workers))
+
+    showResult(my_Platzi_workers)
 
     # Itinerate through the last list created
-    for worker in old_people:
+    for worker in my_python_devs:
         # Print it
         print(worker)
 
